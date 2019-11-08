@@ -1,14 +1,15 @@
 <template>
   <div>
     <Nav />
+    <div class="jumbotron"></div>
     <nuxt />
   </div>
 </template>
 
 <style>
-body {
-  background-color: azure;
-}
+  body {
+    background: azure
+  }
 </style>
 
 <script>
