@@ -11,21 +11,23 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   data() {
     return {
-      posts: []
+      posts: ''
     }
   },
-  mounted() {
-    axios.get('https://jsonplaceholder.typicode.com/todos')
-      .then(response => {
-        console.log(response)
-        this.posts = response.data
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  asyncData() {
+    return axios.get('https://jsonplaceholder.typicode.com/todos')
+        .then(res => {
+          return {
+            posts: res.data
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
   }
 }
 </script>
