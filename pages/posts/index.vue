@@ -3,7 +3,7 @@
     <h2>Making API request - the Vue way</h2>
     <div class="container">
       <div class="row">
-        <Card v-for="post in allPosts" :key="post.id" :post="post" class="ml-auto mr-auto" />
+        <Card v-for="post in posts" :key="post.id" :post="post" class="ml-auto mr-auto" />
       </div>
     </div>
   </div>
@@ -12,7 +12,7 @@
 <script>
 import axios from 'axios'
 import Card from '@/components/Card'
-
+import {mapGetters} from 'vuex'
 
 export default {
   components: {
@@ -20,15 +20,13 @@ export default {
   },
   data() {
     return {
-      posts: ''
+      allPosts: ''
     }
   },
   computed: {
-    allPosts() {
-      return this.$store.getters.posts
-    }
+    ...mapGetters(['posts'])
   },
-  async asyncData({store}) {
+  async fetch({store}) {
     let {data} = await axios.get('https://jsonplaceholder.typicode.com/posts')
     store.dispatch('setPosts', data)
   },
