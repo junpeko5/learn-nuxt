@@ -27,10 +27,6 @@ export default {
   computed: {
     ...mapGetters(['posts'])
   },
-  async fetch({store}) {
-    let {data} = await axios.get('https://jsonplaceholder.typicode.com/posts')
-    store.dispatch('setPosts', data)
-  },
   head: {
     title: 'List of Posts'
   }
