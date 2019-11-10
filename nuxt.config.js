@@ -52,6 +52,8 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    "@/plugins/scrollto.js",
+    "@/plugins/vueselect.js"
   ],
   /*
   ** Nuxt.js dev-modules
